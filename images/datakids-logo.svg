@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Circle -->
+    <circle cx="60" cy="60" r="50" fill="#6B4EE6"/>
+    
+    <!-- Smiling Face (represents the 'kids' part) -->
+    <path d="M40 70 Q60 90 80 70" stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+    
+    <!-- Eyes (made from numbers 1 and 0 for 'data') -->
+    <g transform="translate(35,45)">
+        <!-- Left eye (1) -->
+        <rect x="0" y="0" width="6" height="15" fill="white" rx="2"/>
+    </g>
+    <g transform="translate(75,45)">
+        <!-- Right eye (0) -->
+        <circle cx="3" cy="7" r="7" stroke="white" stroke-width="6" fill="#6B4EE6"/>
+    </g>
+    
+    <!-- Text -->
+    <g transform="translate(60,110)">
+        <text text-anchor="middle" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-size="16" fill="white">
+            DataKids
+        </text>
+    </g>
+    
+    <!-- Decorative elements (math symbols) -->
+    <g transform="translate(15,30)" fill="white" opacity="0.3">
+        <text font-family="Arial" font-size="12">+</text>
+    </g>
+    <g transform="translate(95,25)" fill="white" opacity="0.3">
+        <text font-family="Arial" font-size="12">×</text>
+    </g>
+    <g transform="translate(85,90)" fill="white" opacity="0.3">
+        <text font-family="Arial" font-size="12">=</text>
+    </g>
+    <g transform="translate(25,85)" fill="white" opacity="0.3">
+        <text font-family="Arial" font-size="12">÷</text>
+    </g>
+</svg>

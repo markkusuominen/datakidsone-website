@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">DataKids!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="images/datakids-logo.svg" alt="DataKids Logo">
+        </div>
+        <div class="nav-links">
+            <div class="nav-left">
+                <a href="#games" data-i18n="nav.games">Games</a>
+                <a href="#teachers" data-i18n="nav.teachers">Teachers</a>
+            </div>
+            <div class="nav-right">
+                <a href="about.html" data-i18n="nav.about">About</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+                <div class="language-toggle">
+                    <button onclick="toggleLanguage()" class="lang-btn">EN/FI</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 data-i18n="hero.title">Make Learning an Adventure!</h1>
+        <p data-i18n="hero.subtitle">Discover the magic of numbers and words with DataKids</p>
+        <div class="hero-image">
+            <img src="images/hero-tablet.svg" alt="Kid playing educational game">
+        </div>
+        <button class="cta-button" data-i18n="hero.cta">Play Now - It's Free!</button>
+    </header>
+
+    <section id="games" class="game-cards">
+        <div class="card reading">
+            <img src="images/reading-monster.svg" alt="Reading Monster">
+            <h2 data-i18n="games.reading.title">Word Explorer</h2>
+            <p data-i18n="games.reading.description">Join our friendly monsters on an exciting journey to master reading!</p>
+            <button class="game-button" data-i18n="games.reading.button">Start Reading</button>
+        </div>
+
+        <div class="card math">
+            <img src="images/math-monster.svg" alt="Math Monster">
+            <h2 data-i18n="games.math.title">Number Quest</h2>
+            <p data-i18n="games.math.description">Solve fun puzzles and learn mathematics with monster friends!</p>
+            <button class="game-button" onclick="location.href='number-quest.html'" data-i18n="games.math.button">Start Counting</button>
+        </div>
+
+        <div class="card logic">
+            <img src="images/logic-monster.svg" alt="Logic Monster">
+            <h2 data-i18n="games.logic.title">Logic Land</h2>
+            <p data-i18n="games.logic.description">Train your brain with exciting puzzles and challenges!</p>
+            <button class="game-button" data-i18n="games.logic.button">Start Thinking</button>
+        </div>
+    </section>
+    <section id="teachers" class="teachers-section">
+        <h2 data-i18n="teachers.title">Access educational resources and track student progress</h2>
+        <div class="teacher-options">
+            <div class="teacher-card">
+                <div class="icon">📊</div>
+                <h3 data-i18n="teachers.options.reports">Detailed progress reports</h3>
+            </div>
+            <div class="teacher-card">
+                <div class="icon">🎯</div>
+                <h3 data-i18n="teachers.options.paths">Customizable learning paths</h3>
+            </div>
+            <div class="teacher-card">
+                <div class="icon">🏫</div>
+                <h3 data-i18n="teachers.options.tools">Classroom management tools</h3>
+            </div>
+        </div>
+    </section>
+    <section id="privacy" class="policy-section" style="display: none;">
+        <h2 data-i18n="privacy.title">Privacy Policy</h2>
+        <!-- Privacy content will be added here -->
+    </section>
+    
+    <section id="terms" class="policy-section" style="display: none;">
+        <h2 data-i18n="terms.title">Terms of Use</h2>
+        <!-- Terms content will be added here -->
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/datakids-logo.svg" alt="DataKids Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#privacy" data-i18n="footer.privacy">Privacy Policy</a>
+                <a href="#terms" data-i18n="footer.terms">Terms of Use</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

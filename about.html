@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About DataKids - Fun Learning Adventures!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">
+            <img src="images/datakids-logo.svg" alt="DataKids Logo">
+        </div>
+        <div class="nav-links">
+            <div class="nav-left">
+                <a href="index.html#games" data-i18n="nav.games">Games</a>
+                <a href="index.html#teachers" data-i18n="nav.teachers">Teachers</a>
+            </div>
+            <div class="nav-right">
+                <a href="about.html" data-i18n="nav.about">About</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+                <div class="language-toggle">
+                    <button onclick="toggleLanguage()" class="lang-btn">EN/FI</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="about-hero">
+        <div class="about-hero-content">
+            <h1 data-i18n="about.title">About DataKids</h1>
+            <p class="lead-text" data-i18n="about.intro">DataKids is an engaging educational platform designed to make learning fun and effective for children. Our interactive games help develop essential skills in reading, mathematics, and logical thinking.</p>
+        </div>
+    </header>
+
+    <main class="about-content">
+        <section class="mission-section">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2 data-i18n="about.mission.title">Our Mission</h2>
+                    <p data-i18n="about.mission.text">We believe that every child deserves access to quality education through engaging and interactive learning experiences. Our mission is to make learning an adventure that children look forward to every day.</p>
+                </div>
+                <div class="image-content">
+                    <div class="mission-icon">🎯</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="approach-section">
+            <div class="content-wrapper reverse">
+                <div class="text-content">
+                    <h2 data-i18n="about.approach.title">Our Approach</h2>
+                    <p data-i18n="about.approach.text">Through colorful characters, exciting storylines, and progressive challenges, we create an immersive learning environment that keeps children motivated and excited about their educational journey.</p>
+                </div>
+                <div class="image-content">
+                    <div class="approach-icon">🌟</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <div class="values-grid">
+                <div class="value-card">
+                    <img src="images/gamepad.svg" alt="Fun Learning Icon" class="value-icon">
+                    <h3 data-i18n="about.values.funlearning.title"></h3>
+                    <p data-i18n="about.values.funlearning.text"></p>
+                </div>
+                <div class="value-card">
+                    <img src="images/chart.svg" alt="Progress Tracking Icon" class="value-icon">
+                    <h3 data-i18n="about.values.progress.title"></h3>
+                    <p data-i18n="about.values.progress.text"></p>
+                </div>
+                <div class="value-card">
+                    <img src="images/handshake.svg" alt="Collaboration Icon" class="value-icon">
+                    <h3 data-i18n="about.values.collaboration.title"></h3>
+                    <p data-i18n="about.values.collaboration.text"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="privacy" class="policy-section" style="display: none;">
+        <div class="content-wrapper">
+            <h2 data-i18n="privacy.title">Privacy Policy</h2>
+            <div class="policy-content">
+                <!-- Privacy policy content will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="terms" class="policy-section" style="display: none;">
+        <div class="content-wrapper">
+            <h2 data-i18n="terms.title">Terms of Use</h2>
+            <div class="policy-content">
+                <!-- Terms of use content will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/datakids-logo.svg" alt="DataKids Logo">
+            </div>
+            <div class="footer-links">
+                <a href="#privacy" data-i18n="footer.privacy">Privacy Policy</a>
+                <a href="#terms" data-i18n="footer.terms">Terms of Use</a>
+                <a href="contact.html" data-i18n="footer.contact">Contact Us</a>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

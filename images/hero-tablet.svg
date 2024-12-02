@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background Elements -->
+    <!-- Floating shapes -->
+    <g class="floating-shapes">
+        <!-- Math symbols -->
+        <text x="50" y="100" font-size="40" fill="#FF5722" opacity="0.3">+</text>
+        <text x="520" y="150" font-size="50" fill="#4CAF50" opacity="0.3">÷</text>
+        <text x="120" y="300" font-size="45" fill="#9C27B0" opacity="0.3">×</text>
+        <text x="480" y="280" font-size="35" fill="#FF9800" opacity="0.3">=</text>
+        
+        <!-- Letters -->
+        <text x="80" y="200" font-size="40" fill="#2196F3" opacity="0.3">A</text>
+        <text x="500" y="220" font-size="45" fill="#E91E63" opacity="0.3">B</text>
+        <text x="150" y="150" font-size="35" fill="#673AB7" opacity="0.3">Z</text>
+    </g>
+
+    <!-- Tablet Device -->
+    <g transform="translate(150, 50)">
+        <!-- Tablet Frame -->
+        <rect x="0" y="0" width="300" height="220" rx="20" fill="#424242"/>
+        <rect x="10" y="10" width="280" height="200" rx="10" fill="#FFFFFF"/>
+        
+        <!-- Home Button -->
+        <circle cx="150" cy="200" r="8" fill="#424242"/>
+        
+        <!-- Game Screen Content -->
+        <!-- Game Background -->
+        <rect x="20" y="20" width="260" height="180" rx="5" fill="#E3F2FD"/>
+        
+        <!-- Game Characters -->
+        <!-- Reading Monster (simplified) -->
+        <g transform="translate(40, 80) scale(0.4)">
+            <ellipse cx="100" cy="110" rx="70" ry="80" fill="#4CAF50"/>
+            <circle cx="70" cy="70" r="15" fill="white"/>
+            <circle cx="130" cy="70" r="15" fill="white"/>
+            <path d="M70 100 Q100 130 130 100" fill="none" stroke="#333" stroke-width="4"/>
+        </g>
+        
+        <!-- Math Monster (simplified) -->
+        <g transform="translate(140, 80) scale(0.4)">
+            <ellipse cx="100" cy="110" rx="65" ry="75" fill="#FF5722"/>
+            <circle cx="70" cy="60" r="15" fill="white"/>
+            <circle cx="130" cy="60" r="15" fill="white"/>
+            <path d="M70 100 Q100 120 130 100" fill="none" stroke="#333" stroke-width="4"/>
+        </g>
+        
+        <!-- Logic Monster (simplified) -->
+        <g transform="translate(240, 80) scale(0.4)">
+            <ellipse cx="100" cy="110" rx="60" ry="70" fill="#9C27B0"/>
+            <circle cx="70" cy="60" r="15" fill="white"/>
+            <circle cx="130" cy="60" r="15" fill="white"/>
+            <path d="M70 100 Q100 115 130 95" fill="none" stroke="#333" stroke-width="4"/>
+        </g>
+        
+        <!-- Progress Bar -->
+        <rect x="40" y="160" width="220" height="10" rx="5" fill="#E0E0E0"/>
+        <rect x="40" y="160" width="150" height="10" rx="5" fill="#4CAF50"/>
+        
+        <!-- Score/Stars -->
+        <g transform="translate(40, 30)">
+            <path d="M10,10 L12,16 L18,16 L13,20 L15,26 L10,22 L5,26 L7,20 L2,16 L8,16 Z" fill="#FFD700"/>
+            <path d="M30,10 L32,16 L38,16 L33,20 L35,26 L30,22 L25,26 L27,20 L22,16 L28,16 Z" fill="#FFD700"/>
+            <path d="M50,10 L52,16 L58,16 L53,20 L55,26 L50,22 L45,26 L47,20 L42,16 L48,16 Z" fill="#FFD700"/>
+        </g>
+    </g>
+
+    <!-- Decorative Elements -->
+    <!-- Light beams -->
+    <g opacity="0.1">
+        <path d="M100,200 L500,50" stroke="#FFC107" stroke-width="20"/>
+        <path d="M100,100 L500,300" stroke="#2196F3" stroke-width="15"/>
+        <path d="M50,300 L550,200" stroke="#4CAF50" stroke-width="25"/>
+    </g>
+
+    <!-- Floating Bubbles -->
+    <g>
+        <circle cx="80" y="150" r="10" fill="#E91E63" opacity="0.2"/>
+        <circle cx="520" y="100" r="15" fill="#2196F3" opacity="0.2"/>
+        <circle cx="450" y="300" r="12" fill="#4CAF50" opacity="0.2"/>
+        <circle cx="150" y="250" r="8" fill="#FFC107" opacity="0.2"/>
+    </g>
+</svg>
