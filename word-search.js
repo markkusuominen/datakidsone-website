@@ -247,22 +247,24 @@ class WordSearchGame {
             const categoryButton = document.querySelector(`[data-category="${this.currentCategory}"]`);
             categoryButton.style.backgroundColor = '#4CAF50';
 
+            // Show popup
+            const popup = document.getElementById('completionPopup');
+            document.querySelector('.popup h2').textContent = '🎉';
+            
             if (this.completedCategories.size === Object.keys(this.categories).length) {
                 // All categories completed - show final message
-                const popup = document.getElementById('completionPopup');
-                document.querySelector('.popup h2').textContent = '🎉';
                 document.querySelector('.popup p').textContent = 'Onneksi olkoon! Hienoa! Olet löytänyt kaikki sanat.';
-                popup.style.display = 'flex';
             } else {
                 // Category completed - show intermediate message
-                const popup = document.getElementById('completionPopup');
-                document.querySelector('.popup h2').textContent = '🎉';
                 document.querySelector('.popup p').textContent = 'Onneksi olkoon. Hienoa. Olet löytänyt kaikki sanat. Valitse seuraava kategoria';
-                popup.style.display = 'flex';
-                setTimeout(() => {
-                    popup.style.display = 'none';
-                }, 3000);
             }
+            
+            popup.style.display = 'flex';
+            
+            // Automatically hide the popup after 3 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
         } else {
             this.feedbackElement.textContent = 'Hyvä! Jatka etsimistä! 💪';
         }
