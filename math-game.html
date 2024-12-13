@@ -106,6 +106,9 @@
     <a href="index.html" class="back-button">Back to Games</a>
     <div class="game-container">
         <h1>Matikkaseikkailu</h1>
+        <div class="player-info">
+            <p>Pelaaja: <span id="playerNameDisplay"></span></p>
+        </div>
         <div class="character">
             <img src="images/math-monster.svg" alt="Math Monster" style="width: 100%;">
         </div>
@@ -120,6 +123,14 @@
         <div class="feedback" id="feedback"></div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const playerName = localStorage.getItem('playerName');
+            if (playerName) {
+                document.getElementById('playerNameDisplay').textContent = playerName;
+            }
+        });
+    </script>
     <script src="math-game.js"></script>
 </body>
 </html>

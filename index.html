@@ -5,6 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">DataKids!</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add these styles to your existing CSS */
+        .player-dialog-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .player-dialog {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .player-dialog input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 200px;
+            border: 2px solid #6c5ce7;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        .player-dialog button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .player-dialog button:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
     <nav class="main-nav">
@@ -40,21 +88,21 @@
             <img src="images/reading-monster.svg" alt="Reading Monster">
             <h2 data-i18n="games.reading.title">Word Explorer</h2>
             <p data-i18n="games.reading.description">Join our friendly monsters on an exciting journey to master reading!</p>
-            <button class="game-button" onclick="location.href='word-search.html'">Aloita lukeminen</button>
+            <button class="game-button" onclick="startGame('word-search.html')">Aloita lukeminen</button>
         </div>
 
         <div class="card math">
             <img src="images/math-monster.svg" alt="Math Monster">
             <h2 data-i18n="games.math.title">Number Quest</h2>
             <p data-i18n="games.math.description">Solve fun puzzles and learn mathematics with monster friends!</p>
-            <button class="game-button" onclick="location.href='number-quest.html'" data-i18n="games.math.button">Start Counting</button>
+            <button class="game-button" onclick="startGame('math-game.html')">Aloita laskeminen</button>
         </div>
 
         <div class="card logic">
             <img src="images/logic-monster.svg" alt="Logic Monster">
             <h2 data-i18n="games.logic.title">Logic Land</h2>
             <p data-i18n="games.logic.description">Train your brain with exciting puzzles and challenges!</p>
-            <button class="game-button" onclick="location.href='math-game.html'" data-i18n="games.logic.button">Aloita ajattelu</button>
+            <button class="game-button" onclick="startGame('word-search.html')">Aloita ajattelu</button>
         </div>
     </section>
     <section id="teachers" class="teachers-section">
@@ -84,6 +132,15 @@
         <!-- Terms content will be added here -->
     </section>
 
+    <div class="player-dialog-overlay" id="playerDialog">
+        <div class="player-dialog">
+            <h2>Tervetuloa pelaamaan!</h2>
+            <input type="text" id="playerName" placeholder="Nimesi" required>
+            <input type="number" id="playerAge" placeholder="Ikäsi" required min="1" max="99">
+            <button onclick="savePlayerInfo()">Aloita</button>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
@@ -100,6 +157,41 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function savePlayerInfo() {
+            const name = document.getElementById('playerName').value.trim();
+            const age = document.getElementById('playerAge').value;
+            
+            if (!name || !age) {
+                alert('Täytä sekä nimi että ikä!');
+                return;
+            }
+            
+            localStorage.setItem('playerName', name);
+            localStorage.setItem('playerAge', age);
+            
+            // Hide dialog
+            document.getElementById('playerDialog').style.display = 'none';
+            
+            // Continue to selected game
+            if (window.gameToStart) {
+                location.href = window.gameToStart;
+            }
+        }
+
+        function startGame(gamePage) {
+            const playerName = localStorage.getItem('playerName');
+            if (!playerName) {
+                // Show player info dialog
+                window.gameToStart = gamePage;
+                document.getElementById('playerDialog').style.display = 'flex';
+            } else {
+                // Go directly to game if we already have player info
+                location.href = gamePage;
+            }
+        }
+    </script>
 
     <script src="translations.js"></script>
     <script src="script.js"></script>
