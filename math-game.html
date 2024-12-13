@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matikkaseikkailu - DataKids</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .math-problem {
+            font-size: 2em;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .option-button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            background-color: #6c5ce7;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .option-button:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #a29bfe;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .score-container {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .feedback {
+            font-size: 1.5em;
+            margin: 20px 0;
+            min-height: 40px;
+        }
+
+        .character {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Games</a>
+    <div class="game-container">
+        <h1>Matikkaseikkailu</h1>
+        <div class="character">
+            <img src="images/math-monster.svg" alt="Math Monster" style="width: 100%;">
+        </div>
+        <div class="score-container">
+            Pisteet: <span id="score">0</span>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+        </div>
+        <div class="math-problem" id="problem"></div>
+        <div class="options-container" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script src="math-game.js"></script>
+</body>
+</html>

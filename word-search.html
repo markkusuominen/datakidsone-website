@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanatutkija - DataKids</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .category-selection {
+            margin: 20px 0;
+        }
+
+        .category-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 15px;
+            background-color: #a29bfe;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .category-button:hover {
+            transform: scale(1.05);
+        }
+
+        .category-button.active {
+            background-color: #6c5ce7;
+        }
+
+        .category-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .grid-container {
+            display: inline-block;
+            margin: 20px auto;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid {
+            display: grid;
+            gap: 5px;
+            margin: 20px 0;
+        }
+
+        .grid-cell {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+
+        .grid-cell.selected {
+            background-color: #a29bfe;
+            color: white;
+        }
+
+        .grid-cell.found {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .word-list {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .word-item {
+            padding: 5px 15px;
+            background-color: #e9ecef;
+            border-radius: 15px;
+            font-size: 1.1em;
+        }
+
+        .word-item.found {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .hint-button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #ffd43b;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+
+        .hint-button:hover {
+            transform: scale(1.05);
+        }
+
+        .character {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+        }
+
+        .feedback {
+            font-size: 1.2em;
+            min-height: 40px;
+            margin: 10px 0;
+            color: #495057;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: popupAppear 0.3s ease-out;
+        }
+
+        .popup h2 {
+            color: #6c5ce7;
+            margin-bottom: 20px;
+        }
+
+        .popup-button {
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+
+        .popup-button:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes popupAppear {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .grid-cell {
+                width: 30px;
+                height: 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Games</a>
+    <div class="game-container">
+        <h1>Sanatutkija</h1>
+        <div class="character">
+            <img src="images/reading-monster.svg" alt="Reading Monster" style="width: 100%;">
+        </div>
+        
+        <div class="category-selection">
+            <button class="category-button" data-category="animals">Eläimet</button>
+            <button class="category-button" data-category="colors">Värit</button>
+            <button class="category-button" data-category="nature">Luonto</button>
+        </div>
+
+        <div class="feedback" id="feedback">Valitse kategoria aloittaaksesi!</div>
+        
+        <div class="grid-container">
+            <div class="grid" id="wordGrid"></div>
+        </div>
+
+        <div class="word-list" id="wordList"></div>
+        
+        <button class="hint-button" id="hintButton">Anna vihje</button>
+    </div>
+
+    <div class="popup-overlay" id="completionPopup">
+        <div class="popup">
+            <h2>🎉</h2>
+            <p>Onneksi olkoon. Hienoa. Olet löytänyt kaikki sanat. Valitse seuraava kategoria</p>
+        </div>
+    </div>
+
+    <script src="word-search.js"></script>
+</body>
+</html>
