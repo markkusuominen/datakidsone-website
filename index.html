@@ -22,17 +22,24 @@
 
         .player-dialog {
             background-color: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            min-width: 320px;
+        }
+
+        .player-dialog h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .player-dialog input {
             display: block;
-            margin: 10px auto;
-            padding: 8px;
-            width: 200px;
+            margin: 15px auto;
+            padding: 12px;
+            width: 260px;
             border: 2px solid #6c5ce7;
             border-radius: 8px;
             font-size: 1em;
@@ -51,6 +58,30 @@
 
         .player-dialog button:hover {
             transform: scale(1.05);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            line-height: 1;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-button:hover {
+            color: #333;
+            background-color: #f0f0f0;
         }
     </style>
 </head>
@@ -134,6 +165,7 @@
 
     <div class="player-dialog-overlay" id="playerDialog">
         <div class="player-dialog">
+            <button class="close-button" onclick="closePlayerDialog()">✕</button>
             <h2>Tervetuloa pelaamaan!</h2>
             <input type="text" id="playerName" placeholder="Nimesi" required>
             <input type="number" id="playerAge" placeholder="Ikäsi" required min="1" max="99">
@@ -190,6 +222,11 @@
                 // Go directly to game if we already have player info
                 location.href = gamePage;
             }
+        }
+
+        function closePlayerDialog() {
+            document.getElementById('playerDialog').style.display = 'none';
+            window.gameToStart = null;
         }
     </script>
 
