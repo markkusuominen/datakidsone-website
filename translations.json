@@ -1,5 +1,94 @@
 {
+  "fi": {
+    "title": "DataKids!",
+    "nav": {
+      "games": "Pelit",
+      "about": "Tietoja meistä",
+      "teachers": "Opettajille",
+      "contact": "Ota yhteyttä"
+    },
+    "hero": {
+      "title": "Tee oppimisesta seikkailu!",
+      "subtitle": "Tutustu numeroiden ja sanojen taikamaailmaan DataKidsin kanssa",
+      "cta": "Pelaa nyt - Se on ilmaista!"
+    },
+    "games": {
+      "reading": {
+        "title": "Sanatutkija",
+        "description": "Lähde ystävällisten hirviöiden kanssa jännittävälle lukumatkalle!",
+        "button": "Aloita lukeminen"
+      },
+      "math": {
+        "title": "Matikkaseikkailu",
+        "description": "Ratkaise hauskoja tehtäviä ja opi matematiikkaa hirviöystävien kanssa!",
+        "button": "Aloita laskeminen"
+      },
+      "logic": {
+        "title": "Numeroseikkailu",
+        "description": "Kehitä aivojasi jännittävillä pulmilla ja haasteilla!",
+        "button": "Aloita ajattelu"
+      }
+    },
+    "teachers": {
+      "title": "Seuraa oppilaiden edistymistä ja käytä opetusresursseja",
+      "options": {
+        "reports": "Yksityiskohtaiset edistymisraportit",
+        "paths": "Mukautettavat oppimispolut",
+        "tools": "Luokanhallintavälineet"
+      }
+    },
+    "footer": {
+      "privacy": "Tietosuoja",
+      "terms": "Käyttöehdot",
+      "contact": "Ota yhteyttä"
+    },
+    "about": {
+      "title": "Tietoja meistä",
+      "intro": "DataKids on mukaansatempaava oppimisalusta, joka on suunniteltu tekemään oppimisesta hauskaa ja tehokasta lapsille. Interaktiiviset pelimme auttavat kehittämään tärkeitä taitoja lukemisessa, matematiikassa ja loogisessa ajattelussa.",
+      "mission": {
+        "title": "Tehtävämme",
+        "text": "Uskomme, että jokaisella lapsella on oikeus laadukkaaseen koulutukseen mukaansatempaavien ja interaktiivisten oppimiskokemusten kautta. Tehtävämme on tehdä oppimisesta seikkailu, jota lapset odottavat joka päivä."
+      },
+      "approach": {
+        "title": "Lähestymistapamme",
+        "text": "Värikkäiden hahmojen, jännittävien tarinoiden ja asteittain vaikeutuvien haasteiden avulla luomme mukaansatempaavan oppimisympäristön, joka pitää lapset motivoituneina ja innostuneina oppimispolullaan."
+      },
+      "values": {
+        "funlearning": {
+          "title": "Hauska oppiminen",
+          "text": "Teemme koulutuksesta nautittavaa interaktiivisen pelaamisen kautta"
+        },
+        "progress": {
+          "title": "Edistymisen seuranta",
+          "text": "Seuraamme ja juhlistamme jokaista saavutusta"
+        },
+        "collaboration": {
+          "title": "Yhteistyö",
+          "text": "Työskentelemme yhdessä opettajien ja vanhempien kanssa"
+        }
+      }
+    },
+    "contact": {
+      "page_title": "Ota yhteyttä - DataKids",
+      "title": "Ota yhteyttä",
+      "text": "Onko kysyttävää? Kuulemme mielellämme sinusta!",
+      "email": "Sähköposti: info@datakids.fi",
+      "phone": "Puhelin: +358 123 4567",
+      "form": {
+        "name": "Nimi",
+        "email": "Sähköposti",
+        "subject": "Aihe",
+        "subject_select": "Valitse aihe",
+        "subject_general": "Yleinen kysymys",
+        "subject_technical": "Tekninen tuki",
+        "subject_feedback": "Palaute",
+        "message": "Viesti",
+        "submit": "Lähetä viesti"
+      }
+    }
+  },
   "en": {
+    "title": "DataKids!",
     "nav": {
       "games": "Games",
       "about": "About",
@@ -26,6 +115,14 @@
         "title": "Logic Land",
         "description": "Train your brain with exciting puzzles and challenges!",
         "button": "Start Thinking"
+      }
+    },
+    "teachers": {
+      "title": "Access educational resources and track student progress",
+      "options": {
+        "reports": "Detailed progress reports",
+        "paths": "Customizable learning paths",
+        "tools": "Classroom management tools"
       }
     },
     "footer": {
@@ -59,14 +156,6 @@
         }
       }
     },
-    "teachers": {
-      "title": "Access educational resources and track student progress",
-      "options": {
-        "reports": "Detailed progress reports",
-        "paths": "Customizable learning paths",
-        "tools": "Classroom management tools"
-      }
-    },
     "contact": {
       "page_title": "Contact Us - DataKids",
       "title": "Contact Us",
@@ -83,93 +172,6 @@
         "subject_feedback": "Feedback",
         "message": "Message",
         "submit": "Send Message"
-      }
-    }
-  },
-  "fi": {
-    "nav": {
-      "games": "Pelit",
-      "about": "Tietoja meistä",
-      "teachers": "Opettajille",
-      "contact": "Ota yhteyttä"
-    },
-    "hero": {
-      "title": "Tee oppimisesta seikkailu!",
-      "subtitle": "Löydä numeroiden ja sanojen taika DataKidsin kanssa",
-      "cta": "Pelaa nyt - Se on ilmaista!"
-    },
-    "games": {
-      "reading": {
-        "title": "Sanatutkija",
-        "description": "Lähde ystävällisten hirviöiden kanssa jännittävälle matkalle lukemisen maailmaan!",
-        "button": "Aloita lukeminen"
-      },
-      "math": {
-        "title": "Numeroseikkailu",
-        "description": "Ratkaise hauskoja tehtäviä ja opi matematiikkaa hirviöystävien kanssa!",
-        "button": "Aloita laskeminen"
-      },
-      "logic": {
-        "title": "Logiikkamaa",
-        "description": "Treenaa aivojasi jännittävillä pulmilla ja haasteilla!",
-        "button": "Aloita ajattelu"
-      }
-    },
-    "footer": {
-      "privacy": "Tietosuojakäytäntö",
-      "terms": "Käyttöehdot",
-      "contact": "Ota yhteyttä"
-    },
-    "about": {
-      "title": "Tietoja meistä",
-      "intro": "DataKids on mukaansatempaava oppimisalusta, joka on suunniteltu tekemään oppimisesta hauskaa ja tehokasta lapsille. Interaktiiviset pelimme auttavat kehittämään tärkeitä taitoja lukemisessa, matematiikassa ja loogisessa ajattelussa.",
-      "mission": {
-        "title": "Tehtävämme",
-        "text": "Uskomme, että jokaisella lapsella on oikeus laadukkaaseen koulutukseen mukaansatempaavien ja interaktiivisten oppimiskokemusten kautta. Tehtävämme on tehdä oppimisesta seikkailu, jota lapset odottavat joka päivä."
-      },
-      "approach": {
-        "title": "Lähestymistapamme",
-        "text": "Värikkäiden hahmojen, jännittävien tarinoiden ja asteittain vaikeutuvien haasteiden avulla luomme mukaansatempaavan oppimisympäristön, joka pitää lapset motivoituneina ja innostuneina oppimispolullaan."
-      },
-      "values": {
-        "funlearning": {
-          "title": "Hauska oppiminen",
-          "text": "Teemme koulutuksesta nautittavaa interaktiivisen pelaamisen kautta"
-        },
-        "progress": {
-          "title": "Edistymisen seuranta",
-          "text": "Seuraamme ja juhlistamme jokaista saavutusta"
-        },
-        "collaboration": {
-          "title": "Yhteistyö",
-          "text": "Työskentelemme yhdessä opettajien ja vanhempien kanssa"
-        }
-      }
-    },
-    "teachers": {
-      "title": "Käytä opetusresursseja ja seuraa oppilaiden edistymistä",
-      "options": {
-        "reports": "Yksityiskohtaiset edistymisraportit",
-        "paths": "Mukautettavat oppimispolut",
-        "tools": "Luokanhallintavälineet"
-      }
-    },
-    "contact": {
-      "page_title": "Ota yhteyttä - DataKids",
-      "title": "Ota yhteyttä",
-      "text": "Onko kysyttävää? Kuulemme mielellämme sinusta!",
-      "email": "Sähköposti: info@datakids.fi",
-      "phone": "Puhelin: +358 123 4567",
-      "form": {
-        "name": "Nimi",
-        "email": "Sähköposti",
-        "subject": "Aihe",
-        "subject_select": "Valitse aihe",
-        "subject_general": "Yleinen kysymys",
-        "subject_technical": "Tekninen tuki",
-        "subject_feedback": "Palaute",
-        "message": "Viesti",
-        "submit": "Lähetä viesti"
       }
     }
   }

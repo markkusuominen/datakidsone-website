@@ -8,9 +8,56 @@
     <style>
         .game-container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 220px; /* Add space for the left nav */
+        }
+
+        .left-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #6c5ce7;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .left-nav a:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav a.current-game {
+            background-color: #5348c7;
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        .left-nav a.current-game:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav .nav-title {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 15px;
             text-align: center;
+            font-weight: bold;
         }
 
         .back-button {
@@ -212,31 +259,40 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">Back to Games</a>
+    <div class="left-nav">
+        <div class="nav-title">Games</div>
+        <a href="number-quest.html">Numeroseikkailu</a>
+        <a href="word-search.html" class="current-game">Sanatutkija</a>
+        <a href="math-game.html">Matikkaseikkailu</a>
+        <a href="dashboard.html">Tulokset</a>
+    </div>
+    <a href="index.html" class="back-button" onclick="localStorage.clear()">Etusivulle</a>
     <div class="game-container">
         <h1>Sanatutkija</h1>
         <div class="player-info">
             <p>Pelaaja: <span id="playerNameDisplay"></span></p>
         </div>
-        <div class="character">
-            <img src="images/reading-monster.svg" alt="Reading Monster" style="width: 100%;">
-        </div>
-        
-        <div class="category-selection">
-            <button class="category-button" data-category="animals">Eläimet</button>
-            <button class="category-button" data-category="colors">Värit</button>
-            <button class="category-button" data-category="nature">Luonto</button>
-        </div>
+        <div id="word-search-container">
+            <div class="character">
+                <img src="images/reading-monster.svg" alt="Reading Monster" style="width: 100%;">
+            </div>
+            
+            <div class="category-selection">
+                <button class="category-button" data-category="animals">Eläimet</button>
+                <button class="category-button" data-category="colors">Värit</button>
+                <button class="category-button" data-category="nature">Luonto</button>
+            </div>
 
-        <div class="feedback" id="feedback">Valitse kategoria aloittaaksesi!</div>
-        
-        <div class="grid-container">
-            <div class="grid" id="wordGrid"></div>
-        </div>
+            <div class="feedback" id="feedback">Valitse kategoria aloittaaksesi!</div>
+            
+            <div class="grid-container">
+                <div class="grid" id="wordGrid"></div>
+            </div>
 
-        <div class="word-list" id="wordList"></div>
-        
-        <button class="hint-button" id="hintButton">Anna vihje</button>
+            <div class="word-list" id="wordList"></div>
+            
+            <button class="hint-button" id="hintButton">Anna vihje</button>
+        </div>
     </div>
 
     <div class="popup-overlay" id="completionPopup">
@@ -247,7 +303,8 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // Display player name
+        window.addEventListener('DOMContentLoaded', () => {
             const playerName = localStorage.getItem('playerName');
             if (playerName) {
                 document.getElementById('playerNameDisplay').textContent = playerName;

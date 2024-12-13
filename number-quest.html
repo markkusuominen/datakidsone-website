@@ -15,6 +15,51 @@
             background: white;
             border-radius: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 220px; /* Add space for the left nav */
+        }
+
+        .left-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #6c5ce7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .left-nav a:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav a.current-game {
+            background-color: #5348c7;
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        .left-nav a.current-game:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav .nav-title {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
         }
 
         .problem-display {
@@ -44,6 +89,32 @@
 
         .option-button:hover {
             transform: scale(1.05);
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #6c5ce7;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .player-info {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #333;
         }
 
         .score-display {
@@ -102,29 +173,6 @@
             color: #FFD700;
         }
 
-        .back-button {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background-color: #6C63FF;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            margin: 1rem;
-            transition: transform 0.2s;
-            font-size: 1rem;
-        }
-
-        .back-button:hover {
-            transform: scale(1.05);
-        }
-
-        .game-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
-
         .completion-overlay {
             position: fixed;
             top: 0;
@@ -164,6 +212,14 @@
     </style>
 </head>
 <body>
+    <div class="left-nav">
+        <div class="nav-title">Games</div>
+        <a href="number-quest.html" class="current-game">Numeroseikkailu</a>
+        <a href="word-search.html">Sanatutkija</a>
+        <a href="math-game.html">Matikkaseikkailu</a>
+        <a href="dashboard.html">Tulokset</a>
+    </div>
+    <a href="index.html" class="back-button" onclick="localStorage.clear()">Etusivulle</a>
     <div class="completion-overlay">
         <div class="completion-message">
             Tehtävä suoritettu! 🎉
@@ -176,22 +232,16 @@
             </a>
         </div>
         <div class="nav-right">
-            <a href="index.html" class="back-button">Back to Games</a>
+            <a href="index.html" class="back-button" onclick="localStorage.clear()">Etusivulle</a>
         </div>
     </nav>
 
     <div class="game-container">
-        <img src="images/math-monster.svg" alt="Math Monster" class="monster">
-        <h1 data-i18n="games.math.title">Number Quest</h1>
-        <div class="stars-container">
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
-            <span class="star">⭐</span>
+        <h1>Numeroseikkailu</h1>
+        <div class="player-info">
+            <p>Pelaaja: <span id="playerNameDisplay"></span></p>
         </div>
-        <div class="progress-bar">
-            <div class="progress-fill" style="width: 0%"></div>
-        </div>
-        <div class="problem-display">
+        <div class="problem-display" id="problemDisplay">
             <!-- Problem will be displayed here -->
         </div>
         <div class="feedback"></div>
@@ -328,6 +378,13 @@
                 }, 1000);
             }
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const playerName = localStorage.getItem('playerName');
+            if (playerName) {
+                document.getElementById('playerNameDisplay').textContent = playerName;
+            }
+        });
 
         // Start the game when the page loads
         window.addEventListener('load', () => {

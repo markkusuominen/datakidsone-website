@@ -8,9 +8,12 @@
     <style>
         .game-container {
             max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 220px; /* Add space for the left nav */
         }
 
         .math-problem {
@@ -95,6 +98,57 @@
             transform: scale(1.05);
         }
 
+        .left-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #6c5ce7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .left-nav a:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav a.current-game {
+            background-color: #5348c7;
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        .left-nav a.current-game:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav .nav-title {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .player-info {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
         @media (max-width: 600px) {
             .options-container {
                 grid-template-columns: 1fr;
@@ -103,7 +157,14 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">Back to Games</a>
+    <div class="left-nav">
+        <div class="nav-title">Games</div>
+        <a href="number-quest.html">Numeroseikkailu</a>
+        <a href="word-search.html">Sanatutkija</a>
+        <a href="math-game.html" class="current-game">Matikkaseikkailu</a>
+        <a href="dashboard.html">Tulokset</a>
+    </div>
+    <a href="index.html" class="back-button" onclick="localStorage.clear()">Etusivulle</a>
     <div class="game-container">
         <h1>Matikkaseikkailu</h1>
         <div class="player-info">
@@ -112,19 +173,20 @@
         <div class="character">
             <img src="images/math-monster.svg" alt="Math Monster" style="width: 100%;">
         </div>
+        <div class="math-problem" id="problem"></div>
+        <div class="options-container" id="options"></div>
+        <div class="feedback" id="feedback"></div>
         <div class="score-container">
             Pisteet: <span id="score">0</span>
         </div>
         <div class="progress-container">
             <div class="progress-bar" id="progressBar" style="width: 0%"></div>
         </div>
-        <div class="math-problem" id="problem"></div>
-        <div class="options-container" id="options"></div>
-        <div class="feedback" id="feedback"></div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // Display player name
+        window.addEventListener('DOMContentLoaded', () => {
             const playerName = localStorage.getItem('playerName');
             if (playerName) {
                 document.getElementById('playerNameDisplay').textContent = playerName;

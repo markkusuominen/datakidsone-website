@@ -1,5 +1,5 @@
 let translations = {};
-let currentLang = localStorage.getItem('language') || 'en';
+let currentLang = localStorage.getItem('language') || 'fi';
 
 async function loadTranslations() {
     try {

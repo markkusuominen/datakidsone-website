@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulokset - DataKids</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 220px;
+        }
+
+        .left-nav {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #6c5ce7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .left-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .left-nav a:hover {
+            background-color: #5348c7;
+        }
+
+        .left-nav a.current-game {
+            background-color: #5348c7;
+            cursor: default;
+            opacity: 0.7;
+        }
+
+        .left-nav .nav-title {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .dashboard-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .stat-title {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        .player-info {
+            text-align: center;
+            margin: 1rem 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="left-nav">
+        <div class="nav-title">Games</div>
+        <a href="number-quest.html">Numeroseikkailu</a>
+        <a href="word-search.html">Sanatutkija</a>
+        <a href="math-game.html">Matikkaseikkailu</a>
+        <a href="dashboard.html" class="current-game">Tulokset</a>
+    </div>
+    <a href="index.html" class="back-button" onclick="localStorage.clear()">Etusivulle</a>
+
+    <div class="game-container">
+        <h1>Tulokset</h1>
+        <div class="player-info">
+            <p>Pelaaja: <span id="playerNameDisplay"></span></p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h2>Peliaika</h2>
+                <div class="stat-box">
+                    <div class="stat-title">Tänään</div>
+                    <div class="stat-value">45 min</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Tällä viikolla</div>
+                    <div class="stat-value">3h 20min</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="timeChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>Pisteet</h2>
+                <div class="stat-box">
+                    <div class="stat-title">Matikkaseikkailu</div>
+                    <div class="stat-value">850</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Sanatutkija</div>
+                    <div class="stat-value">720</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="scoreChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>Edistyminen</h2>
+                <div class="stat-box">
+                    <div class="stat-title">Suoritetut tehtävät</div>
+                    <div class="stat-value">42/50</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h2>Viimeisimmät saavutukset</h2>
+                <div class="stat-box">
+                    <div class="stat-title">Matikkamestari</div>
+                    <div class="stat-value">⭐ Kulta</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Sanasankari</div>
+                    <div class="stat-value">⭐ Hopea</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Numeroninja</div>
+                    <div class="stat-value">⭐ Pronssi</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display player name
+        window.addEventListener('DOMContentLoaded', () => {
+            const playerName = localStorage.getItem('playerName');
+            if (playerName) {
+                document.getElementById('playerNameDisplay').textContent = playerName;
+            }
+
+            // Time Chart
+            const timeCtx = document.getElementById('timeChart').getContext('2d');
+            new Chart(timeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Ma', 'Ti', 'Ke', 'To', 'Pe', 'La', 'Su'],
+                    datasets: [{
+                        label: 'Peliaika (minuuttia)',
+                        data: [30, 45, 25, 60, 40, 45, 35],
+                        borderColor: '#6c5ce7',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Score Chart
+            const scoreCtx = document.getElementById('scoreChart').getContext('2d');
+            new Chart(scoreCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Matikka', 'Sanat', 'Numerot'],
+                    datasets: [{
+                        label: 'Pisteet',
+                        data: [850, 720, 650],
+                        backgroundColor: '#6c5ce7'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Progress Chart
+            const progressCtx = document.getElementById('progressChart').getContext('2d');
+            new Chart(progressCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Suoritettu', 'Jäljellä'],
+                    datasets: [{
+                        data: [42, 8],
+                        backgroundColor: ['#6c5ce7', '#e9ecef']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+    </script>
+</body>
+</html>
